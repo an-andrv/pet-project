@@ -1,6 +1,6 @@
 import { Component, Input, OnInit } from '@angular/core';
 
-import { Post, Comment } from '@app/components/models/posts.interfaces';
+import { Post, Comment } from '@shared/models/posts.interfaces';
 import { ANIMATION_FLIP } from '@shared/constants/animations';
 import { CommentsService } from '@shared/services/comments.service';
 

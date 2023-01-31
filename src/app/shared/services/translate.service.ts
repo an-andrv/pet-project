@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { DEFAULT_LANGUAGE, SITE_LANGUAGES } from '@app/components/models/translate.models';
+import { DEFAULT_LANGUAGE, SITE_LANGUAGES } from '@shared/models/translate.models';
 
 @Injectable({
   providedIn: 'root'

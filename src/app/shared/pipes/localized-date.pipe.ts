@@ -1,5 +1,5 @@
 import { Pipe, PipeTransform } from '@angular/core';
-import { DEFAULT_LANGUAGE, Lang } from '@app/components/models/translate.models';
+import { DEFAULT_LANGUAGE, Lang } from '@shared/models/translate.models';
 import { TranslateService } from '@shared/services/translate.service';
 
 @Pipe({

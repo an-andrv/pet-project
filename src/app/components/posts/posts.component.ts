@@ -3,7 +3,7 @@ import { Component, OnDestroy, OnInit } from '@angular/core';
 import { PostsService } from '@shared/services/posts.service';
 import { Subject } from 'rxjs';
 import { takeUntil } from 'rxjs/operators';
-import { Post } from '../models/posts.interfaces';
+import { Post } from '../../shared/models/posts.interfaces';
 
 const POSTS_MAX_COUNT = 12;
 
