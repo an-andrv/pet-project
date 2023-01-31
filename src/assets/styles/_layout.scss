@@ -1,0 +1,6 @@
+@mixin main-inner($max-width: 1336px) {
+  display: block;
+  width: 100%;
+  max-width: $max-width;
+  padding: 48px 32px 64px 68px;
+}

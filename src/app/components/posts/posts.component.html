@@ -1,0 +1,5 @@
+<h2>Here're some posts:</h2>
+
+<div *ngIf="posts.length" class="wrapper">
+  <app-card *ngFor="let post of posts" class="wrapper__item" [post]="post"></app-card>
+</div>

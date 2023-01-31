@@ -1,0 +1,20 @@
+<div *ngIf="post" class="card">
+  <div class="card__front" (click)="click()" [@flip]="isFlipped">
+    <div class="card__header">Title: {{ post.title }}</div>
+    <div class="card__date">Date: {{ date | localizedDate:true }}</div>
+    <div class="card__text">Text: {{ post.body }}</div>
+    <button appStopPropagation>Read comments</button>
+  </div>
+  <div class="card__back" (click)="click()" [@flip]="!isFlipped">
+    <div class="card__header">Back side</div>
+    <div *ngIf="comment; else noCommentsMessage">
+      <div class="card__text">Who: {{ comment.name }}</div>
+      <div class="card__text">Email: {{ comment.email }}</div>
+      <div class="card__text">Said: {{ comment.body }}</div>
+    </div>
+    <ng-template #noCommentsMessage>
+      <div>Oops! There are no comments.</div>
+    </ng-template>
+    <button appStopPropagation>Back</button>
+  </div>
+</div>

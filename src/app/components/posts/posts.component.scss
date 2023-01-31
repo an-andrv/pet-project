@@ -1,0 +1,10 @@
+@import "../../../assets/styles/shared.scss";
+
+.wrapper {
+  display: flex;
+  flex-wrap: wrap;
+
+  &__item {
+    margin: 0 24px 24px 0;
+  }
+}

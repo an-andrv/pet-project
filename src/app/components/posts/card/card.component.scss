@@ -1,0 +1,41 @@
+@import "../../../../assets/styles/shared.scss";
+
+:host {
+  position: relative;
+}
+
+.card {
+    position: relative;
+    min-width: 280px;
+    max-width: 280px;
+    z-index: 0;
+    transform-style: preserve-3d;
+    transition: transform 0.5s ease-in-out, z-index 0.5s ease-in-out;
+
+    &__front,
+    &__back {
+        min-height: 282px;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        width: calc(100% - 48px);
+        background-color: $color-white;
+        border: 1px solid $color-gray;
+        border-radius: 4px;
+        padding: 24px;
+        backface-visibility: hidden;
+    }
+
+    &__front:hover {
+        border-color: $color-white;
+        box-shadow: 0 0 20px rgba(0, 0, 0, 0.17);
+    }
+
+    &__back {
+        position: absolute;
+        top: 0;
+        border-color: $color-white;
+        box-shadow: 0 0 20px rgba(0, 0, 0, 0.17);
+        transform: rotateY(180deg);
+    }
+}
