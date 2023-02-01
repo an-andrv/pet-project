@@ -1,0 +1,8 @@
+<span class="bubble" [matMenuTriggerFor]="infoMenu" [matMenuTriggerData]="{tooltipText: tooltipText}" [innerHTML]="text">
+<mat-menu #infoMenu="matMenu" xPosition="before">
+    <div class="arrow-element">
+        <ng-template matMenuContent>
+            <div style="padding: 12px 20px; font-size: 14px; word-break: break-word;" [innerHTML]="tooltipText"></div>
+        </ng-template>
+    </div>
+</mat-menu>
