@@ -9,10 +9,21 @@
   -moz-osx-font-smoothing: grayscale;
 }
 
-.wrapper {
-  min-height: 100vh;
-}
+.app {
+  &__wrapper {
+    min-height: 100vh;
+  }
 
-.main-inner {
-  @include main-inner();
+  &__inner {
+    @include main-inner(1366px);
+  }
+
+  &__img {
+    width: 100%;
+    max-width: 1366px;
+    height: 200px;
+    background-image: url('https://picsum.photos/1196/200');
+    background-repeat: no-repeat;
+    background-size: cover;
+  }
 }

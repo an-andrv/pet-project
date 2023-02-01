@@ -1,0 +1,19 @@
+@function encode-color($string) {
+  @if type-of($string) == "color" and str-index(#{$string}, "#") == 1 {
+      $hex: str-slice(ie-hex-str($string), 4);
+      $string: unquote("#{$hex}");
+      @return "%23" + $string;
+  }
+  @return $string;
+}
+
+@mixin figure-qu($size: 24px) {
+  width: $size;
+  height: $size;
+}
+
+@mixin icon-arrow($color: $color-white) {
+  background-image: url("data:image/svg+xml,%3Csvg width='24' height='24' viewBox='0 0 24 24' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M14.5 11.5L9 16.9L10 18L16.5 11.5L10.1 5L9.1 6L14.5 11.5Z' fill='#{encode-color($color)}'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  @include figure-qu();
+}
