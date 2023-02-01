@@ -1,41 +1,113 @@
 @import "../../../assets/styles/shared.scss";
 
+$icon-width: 24px;
+
 :host {
   position: relative;
 }
 
 .card {
+  position: relative;
+  min-width: 280px;
+  max-width: 280px;
+  z-index: 0;
+  transform-style: preserve-3d;
+  transition: transform 0.5s ease-in-out, z-index 0.5s ease-in-out;
+
+  &--flipped {
+    z-index: 1;
+  }
+
+  &__front,
+  &__back {
+    min-height: 282px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    width: calc(100% - 48px);
+    background-color: $color-white;
+    border: 1px solid $color-gray;
+    border-radius: 4px;
+    padding: 24px;
+    backface-visibility: hidden;
+  }
+
+  &__front:hover {
+    border-color: $color-white;
+    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.25);
+  }
+
+  &__back {
+    position: absolute;
+    top: 0;
+    border-color: $color-white;
+    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.25);
+    transform: rotateY(180deg);
+  }
+
+  &__text {
+    max-height: 60px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    margin-bottom: 8px;
+  }
+
+  &__header,
+  &__rate {
+    font-weight: 700;
+  }
+
+  &__rate {
     position: relative;
-    min-width: 280px;
-    max-width: 280px;
-    z-index: 0;
-    transform-style: preserve-3d;
-    transition: transform 0.5s ease-in-out, z-index 0.5s ease-in-out;
+    font-weight: 700;
+    padding-right: 24px;
 
-    &__front,
-    &__back {
-        min-height: 282px;
-        display: flex;
-        flex-direction: column;
-        justify-content: space-between;
-        width: calc(100% - 48px);
-        background-color: $color-white;
-        border: 1px solid $color-gray;
-        border-radius: 4px;
-        padding: 24px;
-        backface-visibility: hidden;
+    mat-icon {
+      position: absolute;
+      top: calc(100% / 2 - #{$icon-width} / 2);
+      right: 0;
     }
+  }
 
-    &__front:hover {
-        border-color: $color-white;
-        box-shadow: 0 0 20px rgba(0, 0, 0, 0.17);
-    }
+  &__date {
+    font-style: italic;
+  }
 
-    &__back {
+  &__header,
+  &__date {
+    margin-bottom: 8px;
+  }
+
+  &__actions {
+    display: flex;
+    flex-direction: column;
+  }
+
+  &__score {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+  }
+
+  &__btn {
+    position: relative;
+    margin-top: 24px;
+
+    &--left:after,
+    &--right:after {
+        content: "";
+        @include icon-arrow();
         position: absolute;
-        top: 0;
-        border-color: $color-white;
-        box-shadow: 0 0 20px rgba(0, 0, 0, 0.17);
-        transform: rotateY(180deg);
+        top: calc(100% / 2 - #{$icon-width} / 2);
     }
+
+    &--left:after {
+        left: 5px;
+        transform: rotate(180deg);
+    }
+
+    &--right:after {
+        right: 5px;
+    }
+  }
 }

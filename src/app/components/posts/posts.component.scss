@@ -1,10 +1,18 @@
 @import "../../../assets/styles/shared.scss";
 
-.wrapper {
-  display: flex;
-  flex-wrap: wrap;
+.posts {
+  margin-top: 32px;
+  
+  &__rating {
+    margin-bottom: 32px;
+  }
 
-  &__item {
+  &__wrapper {
+    display: flex;
+    flex-wrap: wrap;
+  }
+  
+  &__card {
     margin: 0 24px 24px 0;
   }
 }

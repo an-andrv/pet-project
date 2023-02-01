@@ -1,8 +1,9 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
+import { PostsActions } from '@app/store/posts.actions';
+import { PostsSelectors } from '@app/store/posts.selectors';
+import { Store } from '@ngrx/store';
 
-import { PostsService } from '@shared/services/posts.service';
-import { Subject } from 'rxjs';
-import { takeUntil } from 'rxjs/operators';
+import { Observable, Subject } from 'rxjs';
 import { Post } from '../../shared/models/posts.interfaces';
 
 const POSTS_MAX_COUNT = 12;
@@ -13,25 +14,25 @@ const POSTS_MAX_COUNT = 12;
   styleUrls: ['./posts.component.scss']
 })
 export class PostsComponent implements OnInit, OnDestroy {
-  posts: Post[] = [];
+  maxCountPosts = POSTS_MAX_COUNT;
+  rate$: Observable<number>;
+  posts$: Observable<Post[]>;
+  loading$: Observable<boolean>;
 
   private onDestroy$ = new Subject<boolean>();
 
-  constructor(private postsService: PostsService) { }
-
-  ngOnInit(): void {
-    this.getPosts();
+  constructor(private store$: Store) {
+    this.posts$ = this.store$.select(PostsSelectors.getData)
+    this.rate$ = this.store$.select(PostsSelectors.rate);
+    this.loading$ = this.store$.select(PostsSelectors.loading);
   }
 
-  getPosts() {
-    this.postsService.get().pipe(takeUntil(this.onDestroy$)).subscribe(posts => {
-      this.posts = posts.slice(0, POSTS_MAX_COUNT);
-    });
+  ngOnInit(): void {
+    this.store$.dispatch(PostsActions.getData());
   }
 
   ngOnDestroy(): void {
     this.onDestroy$.next(true);
     this.onDestroy$.complete();
   }
-
 }

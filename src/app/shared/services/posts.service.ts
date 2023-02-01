@@ -12,7 +12,7 @@ export class PostsService {
 
   constructor(private http: HttpClient) { }
 
-  get(): Observable<Post[]> {
+  getAll(): Observable<Post[]> {
     return this.http.get<Post[]>(environment.urls.getPosts);
   }
 

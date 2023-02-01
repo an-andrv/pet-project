@@ -12,7 +12,7 @@ export class CommentsService {
 
   constructor (private http: HttpClient) { }
 
-  get(postId: number): Observable<Comment[]> {
+  getAll(postId: number): Observable<Comment[]> {
     return this.http.get<Comment[]>(environment.urls.getCommentsByPost(postId));
   }
   

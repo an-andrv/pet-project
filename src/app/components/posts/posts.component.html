@@ -1,5 +1,17 @@
-<h2>Here're some posts:</h2>
-
-<div *ngIf="posts.length" class="wrapper">
-  <app-card *ngFor="let post of posts" class="wrapper__item" [post]="post"></app-card>
+<div class="posts">
+  <h2>Activity:</h2>
+  <div class="posts__rating">
+    <ng-container *ngIf="(rate$ | async) as rate; else noRatingScore">
+      <p>Your overall post rate score: {{ rate }}</p>
+    </ng-container>
+    <ng-template #noRatingScore>
+      Still haven't rating any post. You can do it below!
+    </ng-template>
+  </div>
+  
+  <h2>Here're some posts:</h2>
+  <mat-progress-bar mode="query" *ngIf="loading$ | async"></mat-progress-bar>
+  <div *ngIf="(posts$ | async) as posts" class="posts__wrapper">
+    <app-card *ngFor="let post of posts | slice:0:maxCountPosts" class="posts__card" [post]="post"></app-card>
+  </div>
 </div>

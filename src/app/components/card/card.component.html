@@ -1,20 +1,33 @@
-<div *ngIf="post" class="card">
-  <div class="card__front" (click)="click()" [@flip]="isFlipped">
+<div *ngIf="post" class="card" [ngClass]="{'card--flipped': isFlipped}">
+
+  <div class="card__front" [@flip]="isFlipped">
     <div class="card__header">Title: {{ post.title }}</div>
     <div class="card__date">Date: {{ date | localizedDate:true }}</div>
     <div class="card__text">Text: {{ post.body }}</div>
-    <button appStopPropagation>Read comments</button>
+    <div class="card__actions">
+      <div class="card__score">
+        <button mat-fab color="warn" aria-label="Plus" (click)="increaseRate()">
+          <mat-icon>exposure_plus_1</mat-icon>
+        </button>
+        <div class="card__rate">Rate: <mat-icon>star_rate</mat-icon> {{ rate }}</div>
+        <button mat-fab color="warn" aria-label="Minus" (click)="decreaseRate()">
+          <mat-icon>exposure_minus_1</mat-icon>
+        </button>
+      </div>
+      <button mat-raised-button color="primary" class="card__btn card__btn--right" (click)="flip()">See comment</button>  
+    </div>
   </div>
-  <div class="card__back" (click)="click()" [@flip]="!isFlipped">
-    <div class="card__header">Back side</div>
-    <div *ngIf="comment; else noCommentsMessage">
+
+  <div class="card__back" [@flip]="!isFlipped">
+    <div class="card__header">Comment</div>
+    <ng-container *ngIf="comment; else noCommentsMessage">
       <div class="card__text">Who: {{ comment.name }}</div>
       <div class="card__text">Email: {{ comment.email }}</div>
       <div class="card__text">Said: {{ comment.body }}</div>
-    </div>
+    </ng-container>
     <ng-template #noCommentsMessage>
       <div>Oops! There are no comments.</div>
     </ng-template>
-    <button appStopPropagation>Back</button>
+    <button mat-raised-button color="primary" class="card__btn card__btn--left" (click)="flip()">Back</button>
   </div>
 </div>

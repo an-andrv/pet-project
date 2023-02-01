@@ -35,7 +35,7 @@ describe('CardComponent', () => {
     fixture = TestBed.createComponent(CardComponent);
     component = fixture.componentInstance;
     commentsService = fixture.debugElement.injector.get(CommentsService);
-    spy = spyOn(commentsService, 'get').and.returnValue(of([mockComment]));
+    spy = spyOn(commentsService, 'getAll').and.returnValue(of([mockComment]));
     fixture.detectChanges();
   });
 
