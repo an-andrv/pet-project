@@ -22,13 +22,13 @@ export class PostsComponent implements OnInit, OnDestroy {
   private onDestroy$ = new Subject<boolean>();
 
   constructor(private store$: Store) {
-    this.posts$ = this.store$.select(PostsSelectors.getData)
+    this.posts$ = this.store$.select(PostsSelectors.getPosts)
     this.rate$ = this.store$.select(PostsSelectors.rate);
     this.loading$ = this.store$.select(PostsSelectors.loading);
   }
 
   ngOnInit(): void {
-    this.store$.dispatch(PostsActions.getData());
+    this.store$.dispatch(PostsActions.getPosts());
   }
 
   ngOnDestroy(): void {

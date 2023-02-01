@@ -1,7 +1,6 @@
 import { HttpClientTestingModule, HttpTestingController } from '@angular/common/http/testing'
 import { TestBed } from '@angular/core/testing';
 import { environment } from '@environments/environment';
-import { of } from 'rxjs';
 
 import { PostsService } from './posts.service';
 
@@ -29,7 +28,7 @@ describe('PostsService', () => {
   });
 
   it('should return some posts', () => {
-    service.get().subscribe(posts => {
+    service.getAll().subscribe(posts => {
       expect(posts).toEqual(mockPosts);
     });
 

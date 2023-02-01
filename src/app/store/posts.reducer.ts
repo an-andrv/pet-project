@@ -30,11 +30,11 @@ const rateReducer = createReducer(
     rate: state.rate - 1,
     userId, postId
   })),
-  on(PostsActions.getData, (state) => ({
+  on(PostsActions.getPosts, (state) => ({
     ...state,
     loading: true
   })),
-  on(PostsActions.getDataSuccess, (state, { data }) => ({
+  on(PostsActions.getPostsSuccess, (state, { data }) => ({
     ...state,
     data: data,
     loading: false

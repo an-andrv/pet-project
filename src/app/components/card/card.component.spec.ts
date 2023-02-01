@@ -1,6 +1,7 @@
 import { HttpClientTestingModule } from '@angular/common/http/testing';
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { provideMockStore } from '@ngrx/store/testing';
 import { LocalizedDatePipe } from '@shared/pipes/localized-date.pipe';
 import { CommentsService } from '@shared/services/comments.service';
 import { of } from 'rxjs';
@@ -26,7 +27,7 @@ describe('CardComponent', () => {
     await TestBed.configureTestingModule({
       declarations: [ CardComponent, LocalizedDatePipe ],
       imports: [ HttpClientTestingModule, BrowserAnimationsModule ],
-      providers: [ CommentsService ]
+      providers: [ CommentsService, provideMockStore({})]
     })
     .compileComponents();
   });

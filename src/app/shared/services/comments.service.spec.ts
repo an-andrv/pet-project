@@ -30,7 +30,7 @@ describe('CommentsService', () => {
   });
 
   it('should return comments of the post', () => {
-    service.get(postId).subscribe(posts => {
+    service.getAll(postId).subscribe(posts => {
       expect(posts).toEqual(mockComments);
     });
 
